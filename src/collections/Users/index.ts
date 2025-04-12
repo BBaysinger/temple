@@ -12,7 +12,7 @@ export const Users: CollectionConfig = {
     update: authenticated,
   },
   admin: {
-    defaultColumns: ['name', 'email'],
+    defaultColumns: ['name', 'email', 'role'],
     useAsTitle: 'name',
   },
   auth: true,
@@ -20,6 +20,17 @@ export const Users: CollectionConfig = {
     {
       name: 'name',
       type: 'text',
+    },
+    {
+      name: 'role',
+      type: 'select',
+      required: true,
+      defaultValue: 'contributor',
+      options: [
+        { label: 'Admin', value: 'admin' },
+        { label: 'Moderator', value: 'moderator' },
+        { label: 'Contributor', value: 'contributor' },
+      ],
     },
   ],
   timestamps: true,
